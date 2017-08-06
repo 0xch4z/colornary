@@ -1,0 +1,42 @@
+{
+  "name": "colornary",
+  "version": "0.0.1",
+  "description": "A javscript library for manipulating/converting colors.",
+  "main": "lib/index.js",
+  "scripts": {
+    "build": "babel src -d lib",
+    "prebuild": "rm -rf lib && echo\"deleted old build\"",
+    "lint": "eslint src test",
+    "test": "echo \"TODO: ADD MODULE TESTS\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Charliekenney23/colornary.git"
+  },
+  "keywords": [
+    "convertor",
+    "colors",
+    "css",
+    "hsl",
+    "rgb",
+    "hex"
+  ],
+  "author": "Charles Kenney <me@charleskenney.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Charliekenney23/colornary/issues"
+  },
+  "homepage": "https://github.com/Charliekenney23/colornary#readme",
+  "engines": {
+    "node": ">= 0.10"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-preset-es2015": "^6.24.1",
+    "chai": "^4.1.1",
+    "eslint": "^4.4.0",
+    "eslint-config-airbnb-base": "^11.3.1",
+    "eslint-plugin-import": "^2.7.0",
+    "mocha": "^3.5.0"
+  }
+}
