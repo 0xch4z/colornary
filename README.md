@@ -1,41 +1,38 @@
-# Colornary 🎨
-[TODO: PUT BADGES HERE!]
+# Colornary 🎨 [WIP - NOT FINISHED]
+[![Travis](https://img.shields.io/travis/Charliekenney23/colornary.svg)](https://travis-ci.org/Charliekenney23/colornary)
+[![npm](https://img.shields.io/npm/v/colornary.svg)](https://www.npmjs.com/package/colornary)
+
 A lightweight javascript library for converting and manipulating colors.
 
 ### API Usage ℹ️
-- Conversion API
-  - **toRGB(color)** - *converts given color to RGB.*
-  - **toRGBJSON(color)** - *converts given color to RGB in JSON format.*
-  - **toRGBA(color)** - *converts given color to RGBA.*
-  - **toRGBAJSON(color)** - *convets given color to RGBA in JSON format.*
-  - **toHSL(color)** - *converts given color to HSL.*
-  - **toHSLJSON(color)** - *converts given color to HSL in JSON format.*
-  - **toHSLA(color)** - *converts given color to HSLA.*
-  - **toHSLAJSON(color)** - *converts given color to HSLA.*
-  - **toHex(color)** - *converts given color to Hex.*
-  - **toHexJSON(color)** - *converts given color to Hex.*
-- Manipulation API
-  - **lightenColor(color)** - *returns lighter shade of given color.*
-  - **darkenColor(color)** - *returns darker shade of given color.*
+- **Conversion API**
+  - toRgb(color) - *converts given color to RGB.*
+  - toRgba(color) - *converts given color to RGBA.*
+  - toHsl(color) - *converts given color to HSL.*
+  - toHsla(color) - *converts given color to HSL in JSON format.*
+  - toHex(color) - *converts given color to HSLA.*
+- **Manipulation API**
+  - lightenColor(color) - *returns lighter shade of given color.*
+  - darkenColor(color) - *returns darker shade of given color.*
 
 ### Supported Color Formats ✅
-- RGB/RGBJSON
-- RGBA/RGBAJSON
-- HSL/HSLJSON
-- HSLA/HSLAJSON
+- Rgb / RgbJson
+- Rgba / RgbaJson 
+- Hsl / Hsl
+- Hsla / HslaJson
 - Hex
 
-### Goals for v0.0.1 📝
+### Goals for v0.1.0 📝
 - Add HSL/HSLA/RGB/RGBA/HEX/HSLAJSON/HSLJSON/RGBJSON/RGBAJSON/HEXJSON convertors
 - Add universal darken method
 - Add universal lighten method
-- To be lightweight and easy to use/may slightly effect performance
+- Make browser bundle
 - Implement simple conversion api with methods:
-  - toRGB(color)/toRGBJSON(color)
-  - toRGBA(color)/toRGBAJSON(color)
-  - toHSL(color)/toHSLJSON(color)
-  - toHSLA(color)/toHSLAJSON(color)
-  - toHex(color)/toHEXRGB(color)
+  - toRgb(color)
+  - toRgba(color)
+  - toHsl(color)
+  - toHsla(color)
+  - toHex(color)
 - Implement simple manipulation api with methods:
   - darken(color)
   - lighten(color)
