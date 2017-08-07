@@ -5,9 +5,9 @@
   "main": "lib/index.js",
   "scripts": {
     "build": "babel src -d lib",
-    "prebuild": "rm -rf lib && echo\"deleted old build\"",
+    "prebuild": "rm -rf lib",
     "lint": "eslint src test",
-    "test": "echo \"TODO: ADD MODULE TESTS\""
+    "test": "mocha test"
   },
   "repository": {
     "type": "git",
@@ -32,6 +32,7 @@
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",
+    "babel-plugin-syntax-export-extensions": "^6.13.0",
     "babel-preset-es2015": "^6.24.1",
     "chai": "^4.1.1",
     "eslint": "^4.4.0",

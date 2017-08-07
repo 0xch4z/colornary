@@ -1,1 +1,7 @@
+#  build  #
+###########
 /lib/**
+
+# export-from work around #
+###########################
+/src/utils/index.js
