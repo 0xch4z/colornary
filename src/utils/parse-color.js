@@ -2,24 +2,38 @@ import { equalArrays } from './';
 
 /**
  * Parses RGB string
+ * Assumes format `rgb([red], [green], [blue])`
+ * 
+ * Deconstructs RGB CSS string: gets all three, 0-255 values
+ * (red, green, blue). The values are then mapped to a color
+ * object for manipulation/conversion.
  * @param {string} rgbString
- * @returns {object} - parsed color
+ * @throws if missing rgb values
+ * @returns {object} - parsed RGB color object
  */
 const parseRgbString = (rgbString) => {
   // deconstruct rgb
   const values = rgbString.match(/(2[0-5]\d|1\d{2}|\d{1,2})/g)
     .map(n => parseInt(n, 10));
-  console.log(values.length);
+  console.log(values);
   if (values.length !== 3) throw new Error('Invalid RGB String');
   const color = { r: values[0], g: values[1], b: values[2] };
+  console.log(color);
   // return color object
   return { color, format: 'string', type: 'rgb' };
 };
 
+
 /**
  * Parses RGBA string
+ * Assumes format: `rgba([red], [green], [blue], [alpha])`
+ * 
+ * Deconstructs RGBA CSS string: first getting all three, 0-255
+ * values (red, green, blue), then the alpha channel. The values
+ * are then mapped to a color object for manipulation/conversion.
  * @param {string} rgbaString
- * @returns {object} - parsed color
+ * @throws if missing RGB / alpha values
+ * @returns {object} - parsed RGB color object
  */
 const parseRgbaString = (rgbaString) => {
   // deconstruct rgba string
@@ -32,10 +46,17 @@ const parseRgbaString = (rgbaString) => {
   return { color, format: 'string', type: 'rgba' };
 };
 
+
 /**
  * Parses HSL string
- * @param {string} hslString 
- * @returns {object} - parsed color
+ * Assumes format: `hsl([hue], [saturation], [luminance])`
+ * 
+ * Deconstructs HSL CSS string: first getting the hue, then the
+ * percentages (saturation and luminance). The values are then
+ * mapped to a color object for manipulation/conversion.
+ * @param {string} hslString
+ * @throws if missing HSL values
+ * @returns {object} - parsed HSL color object
  */
 const parseHslString = (hslString) => {
   // TODO: NORMALIZE HUE FORMATS
@@ -49,15 +70,23 @@ const parseHslString = (hslString) => {
   return { color, format: 'string', type: 'hsl' };
 };
 
+
 /**
  * Parses HSLA string
- * @param {string} hslaString 
- * @returns {object} - parsed color
+ * Assumes format: `hsla([hue], [saturation], [luminance], [alpha])`
+ * 
+ * Deconstructs HSLA CSS string: first getting the hue, then the
+ * percentages (saturation and luminance), finally, the alpha
+ * channel. The values are then mapped to a color object for
+ * manipulation/conversion.
+ * @param {string} hslaString
+ * @throws if missing HSL / alpha values
+ * @returns {object} - parsed HSLA color object
  */
 const parseHslaString = (hslaString) => {
   // TODO: NORMALIZE HUE FORMATS
   // deconstruct hsla string
-  const hue = hslaString.match(/(360|3[0-5]\d|[12]\d{2}|\d{1,2})deg/)[0];
+  const hue = hslaString.match(/(360|3[0-5]\d|[12]\d{2}|\d{1,2})(deg)?/)[0];
   const perc = hslaString.match(/(\s|,)(100|[1-9]?\d)%,/g)
     .map(s => s.slice(1, -1));
   if (perc.length !== 2) throw new Error('Invalid HSLA String');
@@ -67,17 +96,22 @@ const parseHslaString = (hslaString) => {
   return { color, format: 'string', type: 'hsla' };
 };
 
+
 /**
  * Parses hex string
+ * Assumes format: `#[red][green][blue]`
+ * 
+ * Deconstructs hex CSS string: getting all hex values (red, 
+ * green, blue) and parsing them as integers. The values are then
+ * mapped to a color object for manipulation/conversion. 
  * @param {string} hexString
- * @returns {object} - parsed color
+ * @returns {object} - parsed RGB(hex) color object
  */
 const parseHexString = (hexString) => {
   // deconstruct hex string
   let hex = hexString.slice(1);
   // normalize shorthand hex
   hex = hex.length === 3 ? hex.split('').map(d => d.repeat(2)).join('') : hex;
-  console.log(hex);
   const color = {
     r: parseInt(hex.slice(0, 2), 16),
     g: parseInt(hex.slice(2, 4), 16),
@@ -87,10 +121,16 @@ const parseHexString = (hexString) => {
   return { color, format: 'string', type: 'rgb', hex: true };
 };
 
+
 /**
- * Parses color string (mid reducer)
- * @param {string} colorString 
- * @returns {object} - referred parsed color
+ * Parses color string
+ * Assumes CSS compatability
+ * 
+ * Matches the given CSS string with a given prefix and calls
+ * the corresponding parser, returning the parsed color object
+ * @param {string} colorString
+ * @throws if color type not matched
+ * @returns {object} - parsed [deffered] color object
  */
 const parseColorString = (colorString) => {
   let color;
@@ -104,10 +144,17 @@ const parseColorString = (colorString) => {
   return color;
 };
 
+
 /**
  * Parses color object
+ * Assumes CSS compatability
+ * 
+ * Matches the given color objects keys with a given format. The
+ * color is then encapsulated in a parsed color object for 
+ * manipulation/conversion.
  * @param {object} colorString
- * @returns {object} - parsed color
+ * @throws if color keys not matched
+ * @returns {object} - parsed [type] color object
  */
 const parseColorObject = (colorObject) => {
   const keys = Object.keys(colorObject).map(c => c.toLowerCase());
@@ -120,12 +167,26 @@ const parseColorObject = (colorObject) => {
   return { color: colorObject, format: 'json', type };
 };
 
+
 /**
  * Parses color (reducer)
- * @param {any} color - color to convert
+ * 
+ * Switches on color type and calls corresponding type
+ * parser.
+ * @param {string|object} color - color to convert
+ * @throws color type not string or object
  * @returns {object} - referred parsed color
+ * 
+ * @example Color string call stack
+ * parseColor(`#fff`) =>
+ *  parseColorString(`#fff`) =>
+ *    parseHexColorString(`#fff`) 
+ * 
+ * @example Color object call stack
+ * parseColor({ r: 255, g: 255, b: 255 }) =>
+ *  parseColorObject({ r: 255, g: 255, b: 255 })
  */
-export default (color) => {
+const parseColor = (color) => {
   let parsedColor;
   try {
     switch (typeof color) {
@@ -143,3 +204,5 @@ export default (color) => {
   }
   return parsedColor;
 };
+
+export default parseColor;

@@ -1,6 +1,7 @@
 const assert = require('chai').assert;
 const parseColor = require('../lib/utils/parse-color').default;
 
+
 /**
  * @param {string} title
  * @param {tests} object
@@ -15,6 +16,7 @@ const makeParserTests = ({ title, tests }) => {
     });
   });
 };
+
 
 /**
  * Parse RGB Tests
@@ -44,6 +46,7 @@ const parseRgbTests = {
     },
   ],
 };
+
 
 /**
  * Parse RGBA Tests
@@ -86,6 +89,7 @@ const parseRgbaTests = {
   ],
 };
 
+
 /**
  * Parse HSL Tests
  */
@@ -118,6 +122,7 @@ const parseHslTests = {
     },
   ],
 };
+
 
 /**
  * Parse HSLA Tests
@@ -167,6 +172,7 @@ const parseHexTests = {
     },
   ],
 };
+
 
 /**
  * Run Tests
