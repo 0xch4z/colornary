@@ -8,7 +8,7 @@
  * switch on the max value to calculate the hue. Finally, the values
  * are mapped to a HSL CSS string.
  * @param {object} rgbColor
- * @returns {string} - HSL string
+ * @returns {string} - HSL CSS string
  */
 export const toHsl = (rgbColor) => {
   const red = rgbColor.r / 255;
@@ -48,7 +48,7 @@ export const toHsl = (rgbColor) => {
  * Returns result of previously declared toHsl function, changes
  * the prefix to `hsla` and appends a default alpha channel of 1.
  * @param {object} rgbColor
- * @returns {string} - HSLA string
+ * @returns {string} - HSLA CSS string
  */
 export const toHsla = rgbColor => `hsla${toHsl(rgbColor).slice(3, -1)},1)`;
 
@@ -59,7 +59,7 @@ export const toHsla = rgbColor => `hsla${toHsl(rgbColor).slice(3, -1)},1)`;
  * Deconstructs RGB color object and maps its values to a Hex
  * CSS string format.
  * @param {object} rgbColor
- * @returns {string} - Hex string
+ * @returns {string} - Hex CSS string
  */
 export const toHex = (rgbColor) => {
   const { r, g, b } = rgbColor;
@@ -76,7 +76,7 @@ export const toHex = (rgbColor) => {
  * Deconstructs RGB color object and maps its values to a RGB
  * CSS string format.
  * @param {object} rgbColor
- * @return {string} - Hex String
+ * @return {string} - RGB CSS string
  */
 export const toRgb = (rgbColor) => {
   const { r, g, b } = rgbColor;
@@ -90,6 +90,6 @@ export const toRgb = (rgbColor) => {
  * Returns result of previously declared toRgb function, changes
  * the prefix to `rgba` and appends a default alpha channel of 1.
  * @param {object} rgbColor
- * @return {string} - Hex String
+ * @return {string} - RGBA CSS string
  */
 export const toRgba = rgbColor => `rgba${toRgb(rgbColor).slice(3, -1)},1)`;

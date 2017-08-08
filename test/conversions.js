@@ -76,6 +76,56 @@ const convertRgbTests = {
 
 
 /**
+ * Convert RGBA Tests
+ */
+const convertRgbaTests = {
+  format: 'RGBA',
+  tests: [
+    {
+      outFormat: 'Hex',
+      input: toHex('rgba(255,255,255,1.0)'),
+      output: '#ffffff',
+    },
+    {
+      outFormat: 'Hex',
+      input: toHex('rgba(153,238,0,0.5)'),
+      output: '#99ee00',
+    },
+    {
+      outFormat: 'RGB',
+      input: toRgb('rgba(192,168,1,1)'),
+      output: 'rgb(192,168,1)',
+    },
+    {
+      outFormat: 'RGB',
+      input: toRgb('rgba(127,0,0,1)'),
+      output: 'rgb(127,0,0)',
+    },
+    {
+      outFormat: 'HSL',
+      input: toHsl('rgba(127,0,0,1)'),
+      output: 'hsl(0,100%,25%)',
+    },
+    {
+      outFormat: 'HSL',
+      input: toHsl('rgba(153,238,0,1)'),
+      output: 'hsl(81,100%,47%)',
+    },
+    {
+      outFormat: 'HSLA',
+      input: toHsla('rgba(127,0,0,0.5)'),
+      output: 'hsla(0,100%,25%,0.5)',
+    },
+    {
+      outFormat: 'HSLA',
+      input: toHsla('rgba(153,238,0,1)'),
+      output: 'hsla(81,100%,47%,1)',
+    },
+  ],
+};
+
+
+/**
  * Convert Hex Tests
  */
 const convertHexTests = {
@@ -136,6 +186,7 @@ const convertHexTests = {
  */
 const allTests = [
   convertRgbTests,
+  convertRgbaTests,
   convertHexTests,
 ];
 allTests.forEach(test => makeConversionTests(test));
