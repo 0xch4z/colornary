@@ -6,3 +6,11 @@ export {
   toRgb,
   toRgba,
 } from './conversions';
+
+export {
+  darken,
+  desaturate,
+  lighten,
+  opacify,
+  saturate
+} from './manipulations';
