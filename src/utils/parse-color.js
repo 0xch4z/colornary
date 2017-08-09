@@ -15,10 +15,8 @@ const parseRgbString = (rgbString) => {
   // deconstruct rgb
   const values = rgbString.match(/(2[0-5]\d|1\d{2}|\d{1,2})/g)
     .map(n => parseInt(n, 10));
-  console.log(values);
   if (values.length !== 3) throw new Error('Invalid RGB String');
   const color = { r: values[0], g: values[1], b: values[2] };
-  console.log(color);
   // return color object
   return { color, format: 'string', type: 'rgb' };
 };
@@ -59,14 +57,19 @@ const parseRgbaString = (rgbaString) => {
  * @returns {object} - parsed HSL color object
  */
 const parseHslString = (hslString) => {
-  // TODO: NORMALIZE HUE FORMATS
-  // deconstruct hsl string
-  const hue = hslString.match(/\((360|3[0-5]\d|[12]\d{2}|[1-9]?\d|\d)deg/g)[0].slice(1);
-  const perc = hslString.match(/(\s|,)(100|[1-9]?\d)%(,|\))/g)
-    .map(s => s.slice(1, -1));
-  if (perc.length !== 2) throw new Error('Invalid HSL String');
+  // Deconstruct hsl string
+  const degPattern = '(360|3[0-5]\\d|[12]\\d{2}|[1-9]?\\d|\\d)(deg)?';
+  const turnPattern = '(1(\\.0+)?|0(\\.\\d+)?)';
+  let hue = hslString.match(new RegExp(`\\((${degPattern}|${turnPattern})`, 'g'));
+  const perc = hslString.match(/[\s,](100|[1-9]?\d)%/g).map(s => parseInt(s.slice(1, -1), 10) / 100);
+  if (perc.length !== 2 || hue.length !== 1) throw new Error('Invalid HSL String');
+  // Normalize hue
+  if (/deg/.test(hue)) hue = hue[0].slice(1).replace('deg', '');
+  else if (/turn/.test(hue)) hue = parseInt(hue[0].slice(1).replace('turn', ''), 10) * 360;
+  else hue = hue[0].slice(1);
+  hue = parseInt(hue, 10);
   const color = { h: hue, s: perc[0], l: perc[1] };
-  // return color object
+  // Return color object
   return { color, format: 'string', type: 'hsl' };
 };
 
@@ -84,15 +87,20 @@ const parseHslString = (hslString) => {
  * @returns {object} - parsed HSLA color object
  */
 const parseHslaString = (hslaString) => {
-  // TODO: NORMALIZE HUE FORMATS
-  // deconstruct hsla string
-  const hue = hslaString.match(/(360|3[0-5]\d|[12]\d{2}|\d{1,2})(deg)?/)[0];
-  const perc = hslaString.match(/(\s|,)(100|[1-9]?\d)%,/g)
-    .map(s => s.slice(1, -1));
-  if (perc.length !== 2) throw new Error('Invalid HSLA String');
-  const alpha = Number(hslaString.match(/(\s|,)(1(\.0)?|0(\.\d+)?)\)/)[0].slice(1, -1));
+  // Deconstruct hsl string
+  const degPattern = '(360|3[0-5]\\d|[12]\\d{2}|[1-9]?\\d|\\d)(deg)?';
+  const turnPattern = '(1(\\.0+)?|0(\\.\\d+)?)';
+  let hue = hslaString.match(new RegExp(`\\((${degPattern}|${turnPattern})`, 'g'));
+  const perc = hslaString.match(/[\s,](100|[1-9]?\d)%/g).map(s => parseInt(s.slice(1, -1), 10) / 100);
+  const alpha = Number(hslaString.match(/(,|\s)(1(\.\d+)?|0(\.\d+)?)\)/)[0].slice(1, -1));
+  if (perc.length !== 2 || hue.length !== 1) throw new Error('Invalid HSL String');
+  // Normalize hue
+  if (/deg/.test(hue)) hue = hue[0].slice(1).replace('deg', '');
+  else if (/turn/.test(hue)) hue = parseInt(hue[0].slice(1).replace('turn', ''), 10) * 360;
+  else hue = hue[0].slice(1);
+  hue = parseInt(hue, 10);
   const color = { h: hue, s: perc[0], l: perc[1], a: alpha };
-  // return color object
+  // Return color object
   return { color, format: 'string', type: 'hsla' };
 };
 
@@ -124,7 +132,7 @@ const parseHexString = (hexString) => {
 
 /**
  * Parses color string
- * Assumes CSS compatability
+ * Assumes CSS compatability and hue values are in degrees
  * 
  * Matches the given CSS string with a given prefix and calls
  * the corresponding parser, returning the parsed color object

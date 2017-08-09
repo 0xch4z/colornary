@@ -99,23 +99,23 @@ const parseHslTests = {
     {
       input: parseColor('hsl(90deg, 90%, 20%)'),
       output: {
-        color: { h: '90deg', s: '90%', l: '20%' },
+        color: { h: 90, s: 0.9, l: 0.2 },
         format: 'string',
         type: 'hsl',
       },
     },
     {
-      input: parseColor('hsl(400deg, 90%, 10%)'),
-      output: undefined,
-    },
-    {
-      input: parseColor('hsl(90deg, 500%, 20%)'),
-      output: undefined,
-    },
-    {
       input: parseColor('hsl(10deg, 95%, 100%)'),
       output: {
-        color: { h: '10deg', s: '95%', l: '100%' },
+        color: { h: 10, s: 0.95, l: 1 },
+        format: 'string',
+        type: 'hsl',
+      },
+    },
+    {
+      input: parseColor('hsl(10,95%,0%)'),
+      output: {
+        color: { h: 10, s: 0.95, l: 0 },
         format: 'string',
         type: 'hsl',
       },
@@ -133,15 +133,15 @@ const parseHslaTests = {
     {
       input: parseColor('hsla(90deg, 90%, 90%, 1.0)'),
       output: {
-        color: { h: '90deg', s: '90%', l: '90%', a: 1.0 },
+        color: { h: 90, s: 0.9, l: 0.9, a: 1 },
         format: 'string',
         type: 'hsla',
       },
     },
     {
-      input: parseColor('hsla(0deg, 90%, 20%, 1.0)'),
+      input: parseColor('hsla(0,90%,20%,1)'),
       output: {
-        color: { h: '0deg', s: '90%', l: '20%', a: 1.0 },
+        color: { h: 0, s: 0.9, l: 0.2, a: 1 },
         format: 'string',
         type: 'hsla',
       },

@@ -180,11 +180,58 @@ const convertHexTests = {
   ],
 };
 
+const convertHslTests = {
+  format: 'HSL',
+  tests: [
+    {
+      outFormat: 'Hex',
+      input: toHex('hsl(0,0%,0%)'),
+      output: '#000000',
+    },
+    {
+      outFormat: 'Hex',
+      input: toHex('hsl(180,100%,50%)'),
+      output: '#00ffff',
+    },
+    {
+      outFormat: 'RGB',
+      input: toRgb('hsl(300,100%,25%)'),
+      output: 'rgb(128,0,128)',
+    },
+    {
+      outFormat: 'RGB',
+      input: toRgb('hsl(180,100%,25%)'),
+      output: 'rgb(0,128,128)',
+    },
+    {
+      outFormat: 'RGBA',
+      input: toRgba('hsl(300,100%,25%)'),
+      output: 'rgba(128,0,128,1)',
+    },
+    {
+      outFormat: 'RGBA',
+      input: toRgba('hsl(180,100%,25%)'),
+      output: 'rgba(0,128,128,1)',
+    },
+    {
+      outFormat: 'HSLA',
+      input: toHsla('hsl(0,0%,0%)'),
+      output: 'hsla(0,0%,0%,1)',
+    },
+    {
+      outFormat: 'HSLA',
+      input: toHsla('hsl(180,100%,50%)'),
+      output: 'hsla(180,100%,50%,1)',
+    }
+  ],
+};
+
 
 /**
  * Run Tests
  */
 const allTests = [
+  convertHslTests,
   convertRgbTests,
   convertRgbaTests,
   convertHexTests,
