@@ -9,8 +9,9 @@ export {
 
 export {
   darken,
-  desaturate,
   lighten,
+  saturate,
+  desaturate,
   opacify,
-  saturate
+  transparentize,
 } from './manipulations';

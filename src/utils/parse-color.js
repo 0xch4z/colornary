@@ -196,19 +196,15 @@ const parseColorObject = (colorObject) => {
  */
 const parseColor = (color) => {
   let parsedColor;
-  try {
-    switch (typeof color) {
-      case 'string':
-        parsedColor = parseColorString(color);
-        break;
-      case 'object':
-        parsedColor = parseColorObject(color);
-        break;
-      default:
-        throw new Error('Unsupported color format');
-    }
-  } catch (err) {
-    console.error(err);
+  switch (typeof color) {
+    case 'string':
+      parsedColor = parseColorString(color);
+      break;
+    case 'object':
+      parsedColor = parseColorObject(color);
+      break;
+    default:
+      throw new Error('Unsupported color format');
   }
   return parsedColor;
 };

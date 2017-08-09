@@ -14,75 +14,113 @@ const conversions = {
 
 
 /**
- * Convets color to Hsl
+ * Converts color to Hsl
  * 
- * @param {string|object} color
+ * @param {string|object} $color
  * @return {string} - Hsl string  
  */
-export const toHsl = (_color) => {
-  const colorObject = parseColor(_color);
-  const { type, color } = colorObject;
-  return conversions[type].toHsl(color);
+export const toHsl = ($color) => {
+  let hslColor;
+  try {
+    const colorObject = parseColor($color);
+    const { type, color } = colorObject;
+    hslColor = conversions[type].toHsl(color);
+  } catch (err) {
+    console.error(err);
+  }
+  return hslColor;
 };
 
 
 /**
- * Convets color to Hsla
+ * Converts color to Hsla
  * 
- * @param {string|object} color
+ * @param {string|object} $color
  * @return {string} - Hsla string  
  */
-export const toHsla = (_color) => {
-  const colorObject = parseColor(_color);
-  const { type, color } = colorObject;
-  return conversions[type].toHsla(color);
+export const toHsla = ($color) => {
+  let hslaColor;
+  try {
+    const colorObject = parseColor($color);
+    const { type, color } = colorObject;
+    hslaColor = conversions[type].toHsla(color);
+  } catch (err) {
+    console.error(err);
+  }
+  return hslaColor;
 };
 
 
 /**
  * Converts color to Hex
  * 
- * @param {string|object} color
+ * @param {string|object} $color
  * @returns {string} - Hex string
  */
-export const toHex = (_color) => {
-  const colorObject = parseColor(_color);
-  const { type, color } = colorObject;
-  return conversions[type].toHex(color);
+export const toHex = ($color) => {
+  let hexColor;
+  try {
+    const colorObject = parseColor($color);
+    const { type, color } = colorObject;
+    hexColor = conversions[type].toHex(color);
+  } catch (err) {
+    console.error(err);
+  }
+  return hexColor;
 };
 
 
 /**
  * Converts color to RGB
  * 
- * @param {string|object} color
+ * @param {string|object} $color
  * @returns {string} - RGB CSS string
  */
-export const toRgb = (_color) => {
-  const colorObject = parseColor(_color);
-  const { type, color } = colorObject;
-  return conversions[type].toRgb(color);
+export const toRgb = ($color) => {
+  let rgbColor;
+  try {
+    const colorObject = parseColor($color);
+    const { type, color } = colorObject;
+    rgbColor = conversions[type].toRgb(color);
+  } catch (err) {
+    console.error(err);
+  }
+  return rgbColor;
 };
 
 
 /**
  * Converts color to RGBA
  * 
- * @param {string|object} color
+ * @param {string|object} $color
  * @returns {string} - RGBA CSS string
  */
-export const toRgba = (_color) => {
-  const colorObject = parseColor(_color);
-  const { type, color } = colorObject;
-  return conversions[type].toRgba(color);
+export const toRgba = ($color) => {
+  let rgbaColor;
+  try {
+    const colorObject = parseColor($color);
+    const { type, color } = colorObject;
+    rgbaColor = conversions[type].toRgba(color);
+  } catch (err) {
+    console.error(err);
+  }
+  return rgbaColor;
 };
 
 
 /**
  * Converts color to JSON
  * 
- * @param {string|object} color
+ * @param {string|object} $color
  * @returns {object} - Color JSON
  */
-export const toJSON = color => parseColor(color).color;
+export const toJSON = (color) => {
+  let jsonColor;
+  try {
+    jsonColor = parseColor(color).color;
+  } catch (err) {
+    console.error(err);
+  }
+  return jsonColor;
+};
 

@@ -6,10 +6,10 @@ const parseColor = require('../lib/utils/parse-color').default;
  * @param {string} title
  * @param {tests} object
  */
-const makeParserTests = ({ title, tests }) => {
+const makeParserTests = ({ type, tests }) => {
   tests.forEach((test, index) => {
     const { input, output } = test;
-    describe(`${title} #${index + 1}`, () => {
+    describe(`Parse ${type} - Test #${index + 1} | parseColor([${type}])`, () => {
       it(`should return ${JSON.stringify(output)}`, () => {
         assert.equal(JSON.stringify(input), JSON.stringify(output));
       });
@@ -22,7 +22,7 @@ const makeParserTests = ({ title, tests }) => {
  * Parse RGB Tests
  */
 const parseRgbTests = {
-  title: 'Parse RGB - Test',
+  type: 'RGB',
   tests: [
     {
       input: parseColor('rgb(255,255,255)'),
@@ -40,10 +40,6 @@ const parseRgbTests = {
         type: 'rgb',
       },
     },
-    {
-      input: parseColor('rgb(a,255,255)'),
-      error: 'unsupported color format',
-    },
   ],
 };
 
@@ -52,7 +48,7 @@ const parseRgbTests = {
  * Parse RGBA Tests
  */
 const parseRgbaTests = {
-  title: 'Parse RGBA - Test',
+  type: 'RGBA',
   tests: [
     {
       input: parseColor('rgba(255,255,255,1.0)'),
@@ -78,14 +74,6 @@ const parseRgbaTests = {
         type: 'rgba',
       },
     },
-    {
-      input: parseColor('rgba(a,255,255,1)'),
-      output: undefined,
-    },
-    {
-      input: parseColor('rgba(255,255, 255,f)'),
-      output: undefined,
-    },
   ],
 };
 
@@ -94,7 +82,7 @@ const parseRgbaTests = {
  * Parse HSL Tests
  */
 const parseHslTests = {
-  title: 'Parse HSL - Test',
+  type: 'HSL',
   tests: [
     {
       input: parseColor('hsl(90deg, 90%, 20%)'),
@@ -128,7 +116,7 @@ const parseHslTests = {
  * Parse HSLA Tests
  */
 const parseHslaTests = {
-  title: 'Parse HSLA - Test',
+  type: 'HSLA',
   tests: [
     {
       input: parseColor('hsla(90deg, 90%, 90%, 1.0)'),
@@ -150,7 +138,7 @@ const parseHslaTests = {
 };
 
 const parseHexTests = {
-  title: 'Parse Hex = Tests',
+  type: 'Hex',
   tests: [
     {
       input: parseColor('#0f0'),
