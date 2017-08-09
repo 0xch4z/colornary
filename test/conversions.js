@@ -180,6 +180,10 @@ const convertHexTests = {
   ],
 };
 
+
+/**
+ * Convert HSL Tests
+ */
 const convertHslTests = {
   format: 'HSL',
   tests: [
@@ -222,15 +226,65 @@ const convertHslTests = {
       outFormat: 'HSLA',
       input: toHsla('hsl(180,100%,50%)'),
       output: 'hsla(180,100%,50%,1)',
-    }
+    },
   ],
 };
 
 
 /**
+ * Convert HSLA Tests
+ */
+const convertHslaTests = {
+  format: 'HSLA',
+  tests: [
+    {
+      outFormat: 'Hex',
+      input: toHex('hsla(0,0%,0%,1)'),
+      output: '#000000',
+    },
+    {
+      outFormat: 'Hex',
+      input: toHex('hsla(180,100%,50%,0.5)'),
+      output: '#00ffff',
+    },
+    {
+      outFormat: 'RGB',
+      input: toRgb('hsla(300,100%,25%,1)'),
+      output: 'rgb(128,0,128)',
+    },
+    {
+      outFormat: 'RGB',
+      input: toRgb('hsla(180,100%,25%,0.2)'),
+      output: 'rgb(0,128,128)',
+    },
+    {
+      outFormat: 'RGBA',
+      input: toRgba('hsla(300,100%,25%,1)'),
+      output: 'rgba(128,0,128,1)',
+    },
+    {
+      outFormat: 'RGBA',
+      input: toRgba('hsla(180,100%,25%,0.25)'),
+      output: 'rgba(0,128,128,0.25)',
+    },
+    {
+      outFormat: 'HSLA',
+      input: toHsla('hsla(0,0%,0%,1)'),
+      output: 'hsla(0,0%,0%,1)',
+    },
+    {
+      outFormat: 'HSLA',
+      input: toHsla('hsla(180,100%,50%,0.3)'),
+      output: 'hsla(180,100%,50%,0.3)',
+    },
+  ],
+};
+
+/**
  * Run Tests
  */
 const allTests = [
+  convertHslaTests,
   convertHslTests,
   convertRgbTests,
   convertRgbaTests,
