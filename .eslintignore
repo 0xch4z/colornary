@@ -1,6 +1,6 @@
 #  build  #
 ###########
-/lib/**
+/build/**
 
 # export-from work around #
 ###########################

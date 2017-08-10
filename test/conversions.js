@@ -6,7 +6,7 @@ const {
   toHex,
   toRgb,
   toRgba,
-} = require('../lib');
+} = require('../build');
 
 
 /**

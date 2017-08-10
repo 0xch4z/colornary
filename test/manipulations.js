@@ -6,7 +6,7 @@ const {
   transparentize,
   saturate,
   desaturate,
-} = require('../lib');
+} = require('../build');
 
 
 /**

@@ -1,5 +1,5 @@
 const assert = require('chai').assert;
-const parseColor = require('../lib/utils/parse-color').default;
+const parseColor = require('../build/utils/parse-color').default;
 
 
 /**

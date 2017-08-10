@@ -1,8 +1,9 @@
-<h1 align="center">🎨 Colornary</h1>
+<h1 align="center">🎨 Colornary 🖍</h1>
 <p align="center">A lightweight javascript library for converting, parsing, and manipulating colors.</p>
 <p align="center">
-  <img src="https://img.shields.io/travis/Charliekenney23/colornary.svg" alt="Travis"/>
-  <img src="https://img.shields.io/npm/v/colornary.svg" alt="NPM">
+  <img src="https://img.shields.io/travis/Charliekenney23/colornary.svg" href="https://travis-ci.org/Charliekenney23/colornary" alt="Travis-Status"/>
+  <img src="https://img.shields.io/npm/v/colornary.svg" href="https://www.npmjs.com/package/colornary" alt="NPM-Version">
+  <img src="https://img.shields.io/npm/dt/colornary.svg" href="https://www.npmjs.com/package/colornary" alt="NPM-Downloads" >
 </p>
 <h2>🚀 Including Colornary</h2>
 <h4>Node</h4>
@@ -15,14 +16,14 @@
 ```
 <h4>Browser</h4>
 <p>
-  To use in the browser, download the script and add the tag.
+  To use in the browser, download the <a href="https://github.com/Charliekenney23/colornary/releases">script</a> and add the tag.
 </p>
 
 ```html
   <script src="modules/colornary.js"></script>
 ```
 <h2>🌈 Converting Colors</h2>
-<h4>Color ⇒ RGB</h4>
+<h4> <a href="#color-note">Color</a> ⇒ RGB</h4>
 
 ```js
   const myRgbColor = toRgb('#fff');
@@ -53,7 +54,7 @@
   // => `hsla(300,100%,25%,1)`
 ```
 <h2>🖌 Manipulating Colors</h2>
-<h4>Lighten color by a <a href="#factor">factor</a></h4>
+<h4>Lighten <a href="#color-note">color</a> by a <a href="#factor">factor</a></h4>
 
 ```js
   const myLighterColor = lighten('rgb(0, 0, 0)');
