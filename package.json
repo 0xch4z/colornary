@@ -1,6 +1,6 @@
 {
   "name": "colornary",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A javscript library for manipulating/converting colors.",
   "main": "lib/index.js",
   "scripts": {
