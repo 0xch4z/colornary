@@ -33,7 +33,7 @@
 
 ```js
   const myRgbaColor = toRgba('hsla(0, 0%, 100%, 0.5)');
-  // => `rgb(255, 255, 255, 0.5)`
+  // => `rgba(255, 255, 255, 0.5)`
 ```
 <h4> <a href="#color-note">Color</a> ⇒ Hex</h4>
 
@@ -54,7 +54,7 @@
   // => `hsla(300,100%,25%,1)`
 ```
 <h2>🖌 Manipulating Colors</h2>
-<h4>Lighten <a href="#color-note">color</a> by a <a href="#factor">factor</a></h4>
+<h4>Lighten <a href="#color-note">color</a> by a <a href="#factor-note">factor</a></h4>
 
 ```js
   const myLighterColor = lighten('rgb(0, 0, 0)');

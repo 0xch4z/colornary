@@ -3,8 +3,10 @@ const parseColor = require('../build/utils/parse-color').default;
 
 
 /**
- * @param {string} title
- * @param {tests} object
+ * Creates parser tests.
+ * 
+ * @param {string} type - Color type
+ * @param {array} object - Test cases
  */
 const makeParserTests = ({ type, tests }) => {
   tests.forEach((test, index) => {

@@ -5,6 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 /**
  * Determines if two arrays are equal
+ * 
  * @param {array} arr1 
  * @param {array} arr2
  */

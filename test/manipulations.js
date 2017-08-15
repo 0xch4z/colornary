@@ -10,8 +10,10 @@ const {
 
 
 /**
- * @param {string} manipulation
- * @param {array} tests
+ * Creates manipulation tests.
+ * 
+ * @param {string} manipulation - Color manipulation name
+ * @param {array} tests - Test cases
  */
 const makeManipulationTests = ({ manipulation, tests }) => {
   tests.forEach((test, index) => {

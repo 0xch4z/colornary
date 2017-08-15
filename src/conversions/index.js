@@ -123,4 +123,3 @@ export const toJSON = (color) => {
   }
   return jsonColor;
 };
-

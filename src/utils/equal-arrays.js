@@ -1,5 +1,6 @@
 /**
  * Determines if two arrays are equal
+ * 
  * @param {array} arr1 
  * @param {array} arr2
  */
@@ -15,5 +16,6 @@ const equalsArray = (arr1, arr2) => {
   }
   return true;
 };
+
 
 export default equalsArray;

@@ -9,6 +9,7 @@ export class ColorFormatError extends Error {
   }
 }
 
+
 /**
  * Color Max Darkness Error
  */
@@ -19,6 +20,7 @@ export class ColorMaxDarknessError extends Error {
     this.name = 'ColorMaxDarknessError';
   }
 }
+
 
 /**
  * Color Max Brightness Error

@@ -35,6 +35,7 @@ const alterSaturation = ($color, factor) => {
  */
 export const saturate = (color, factor = 0.1) => alterSaturation(color, factor);
 
+
 /**
  * Desaturates color
  * 

@@ -19,4 +19,5 @@ const convenienceToHsla = ($color) => {
   return { color, toOriginalColorType };
 };
 
+
 export default convenienceToHsla;

@@ -1,5 +1,6 @@
 import { equalArrays } from './';
 
+
 /**
  * Parses RGB string
  * Assumes format `rgb([red], [green], [blue])`
@@ -208,5 +209,6 @@ const parseColor = (color) => {
   }
   return parsedColor;
 };
+
 
 export default parseColor;

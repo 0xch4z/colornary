@@ -23,6 +23,7 @@ const alterOpacity = ($color, factor) => {
   return toOriginalColorType({ ...color, a: alpha });
 };
 
+
 /**
  * Opacifies color
  * 

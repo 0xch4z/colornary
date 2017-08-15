@@ -1,4 +1,3 @@
-
 const { assert } = require('chai');
 const {
   toHsl,
@@ -10,8 +9,10 @@ const {
 
 
 /**
- * @param {string} title
- * @param {tests} object
+ * Creates conversion tests.
+ * 
+ * @param {string} format - Starting color format
+ * @param {array} test - Test cases
  */
 const makeConversionTests = ({ format, tests }) => {
   tests.forEach((test, index) => {
@@ -279,6 +280,7 @@ const convertHslaTests = {
     },
   ],
 };
+
 
 /**
  * Run Tests
