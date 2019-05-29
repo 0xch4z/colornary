@@ -1,3 +1,6 @@
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/Charliekenney23/colornary.svg)](https://greenkeeper.io/)
+
 <h1 align="center">🎨 Colornary 🖍</h1>
 <p align="center">A lightweight javascript library for converting, parsing, and manipulating colors.</p>
 <p align="center">
